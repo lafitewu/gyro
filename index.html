@@ -33,13 +33,17 @@
         .slide3 {
             background: chartreuse;
         }
+
+        .gamma {
+            transition: 1s;
+        }
 </style>
 <body>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <div class="slide1">
-                alpha:<span class="alpha"></span><br/>
+                alpha/z轴（手机头的方向）:<span class="alpha"></span><br/>
                 beta:<span class="beta"></span><br/>
                 gamma:<span class="gamma"></span><br/>
             </div>
@@ -70,9 +74,12 @@
     $(function() {
         if (window.DeviceOrientationEvent) {
             window.addEventListener('deviceorientation', function (event) {
-                    $(".alpha").text(event.alpha);
-                    $(".beta").text(event.beta);
-                    $(".gamma").text(event.gamma);
+                    $(".alpha").text(Math.round(event.alpha));
+                    $(".beta").text(Math.round(event.beta));
+                    $(".gamma").text(Math.round(event.gamma));
+
+                    var Px = 0.27*Math.round(event.gamma);
+                $(".gamma").css("margin-left",px+"%");
             }, false);
         } else {
             $(".slide1").text('你的浏览器不支持陀螺仪');
