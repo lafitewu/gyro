@@ -79,10 +79,11 @@
                     $(".gamma").text(Math.round(event.gamma));
 
                     var Px = 0.27*Math.round(event.gamma);
-                $(".gamma").css("margin-left",px+"%");
+                $(".gamma").css("margin-left",Px+"%");
             }, false);
         } else {
             $(".slide1").text('你的浏览器不支持陀螺仪');
         }
+        // $(".gamma").css("margin-left","10vw")
     })
 </script>
